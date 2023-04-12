@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="/insert" method="post">
+
+    {% csrf_token %}
+
+    <input type="text"placeholder="Enter name" name="name"> <br> <br>
+    <input type="text"placeholder="Enter email" name="email"> <br> <br>
+    <input type="number"placeholder="Enter number" name="number"> <br> <br>
+
+    <button type="submit">Submit</button>
+</form>
+
+<table>
+    <thead>
+    <tr>
+        <th>No</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+    </tr>
+
+
+    {% for d in data %}
+    <tr>
+        <th>{{ d.id }}</th>
+        <th>{{ d.name }}</th>
+        <th>{{ d.email }}</th>
+        <th>{{ d.number }}</th>
+    <th>
+        <a href="/update/{{ d.id }}">Update</a>
+        <a href="/delete/{{ d.id }}">Delete</a>
+    </th>
+    </tr>
+
+    {% endfor %}
+    </thead>
+</table>
+
+
+</body>
+</html>
